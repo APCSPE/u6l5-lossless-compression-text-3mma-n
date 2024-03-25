@@ -1,20 +1,20 @@
 def RLE_compress(input_string):
-    current_letter = input_string[0]
-    iteration_count = 0
+    input_list = list(input_string)
+    run_length = 1
     output_string = ""
     i = 0
-    while i < (len(input_string) - 1):
+    for i in range (len(input_list) - 1):
+        current_letter = input_list[i]
+        next_letter = input_list[i + 1]
 
-        while input_string[i] == current_letter and i < (len(input_string) - 1):
-            iteration_count += 1
+        if current_letter == next_letter:
+            run_length += 1
             i += 1
-        if i < (len(input_string) - 1):
-            output_string += (current_letter + str(iteration_count))
+
         else:
-            if input_string[len(input_string) -1] == 
-            output_string += (current_letter + str(iteration_count + 1))
-        iteration_count = 0
-        current_letter = input_string[i]
+            output_string += (current_letter + str(run_length))
+            run_length = 1
+    output_string += (input_list[len(input_list) - 1] + str(run_length))
     return output_string
 
 
